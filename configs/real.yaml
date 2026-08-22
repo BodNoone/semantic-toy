@@ -1,0 +1,49 @@
+engine: real
+output_dir: outputs/real
+max_frames: null
+
+pipeline:
+  enable_drift_correction: true
+  enable_reassociation: true
+
+anchor:
+  min_points: 64
+  confidence_threshold: 0.3
+  ema_momentum: 0.8
+  max_scale_ratio: 4.0
+
+drift:
+  min_correspondences: 3
+  max_residual: 0.5
+  allow_scale: false
+  ransac_iters: 64
+  ransac_sample: 3
+
+reassoc:
+  min_lost_frames: 3
+  max_center_distance_ratio: 1.5
+  max_scale_ratio: 2.0
+  require_same_category: true
+
+map:
+  voxel_size: 0.02
+  confidence_threshold: 0.3
+  store_rgb: false
+
+# 真实模型: 需先准备 externals/ 下的两个仓库与权重
+reconstruction:
+  repo_path: externals/streamvggt
+  checkpoint_path: /path/to/streamvggt.pth
+  image_dir: /path/to/frames
+  device: cuda:0
+  amp_dtype: bfloat16
+  image_mode: crop
+
+tracking:
+  repo_path: externals/sam3
+  checkpoint_path: /path/to/sam3.pt
+  image_dir: /path/to/frames
+  categories: ["chair", "desk", "box"]
+  device: cuda:1
+  score_threshold: 0.5
+  max_objects: 32
