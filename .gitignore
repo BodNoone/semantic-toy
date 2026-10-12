@@ -1,15 +1,20 @@
+# Python
 __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
 .venv/
 venv/
+
+# 运行输出（缓存、可视化、评测结果）
 outputs/
-data/
-checkpoints/
+
+# 模型权重
 *.pt
 *.pth
 *.ckpt
-.env
-.idea/
-.vscode/
+*.safetensors
+
+# 系统文件
+.DS_Store
+Thumbs.db

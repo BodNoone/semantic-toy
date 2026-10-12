@@ -1,0 +1,27 @@
+{
+  "association": {
+    "mode": "appearance_geometry",
+    "match_threshold": 0.35,
+    "min_category_score": 0.2,
+    "create_threshold": 0.3,
+    "lambda_spatial": 0.4
+  },
+  "memory": {
+    "dormant_grace_frames": 30,
+    "appearance_momentum": 0.8,
+    "spatial_momentum": 0.85,
+    "min_quality_for_spatial_update": 0.15
+  },
+  "observations": {
+    "min_valid_points": 8
+  },
+  "evaluation": {
+    "min_gap": 3,
+    "iou_threshold": 0.5
+  },
+  "data": {
+    "num_frames": 40,
+    "num_chairs": 4,
+    "seed": 0
+  }
+}
